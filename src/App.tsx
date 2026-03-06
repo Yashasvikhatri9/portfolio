@@ -457,7 +457,7 @@ const Hero = () => {
               className="text-center"
             >
               <img 
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" 
+                src="https://i.imgur.com/iGFxE3d.jpeg" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
                 className="w-48 h-48 rounded-full object-cover mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
@@ -512,7 +512,7 @@ const About = () => {
               className="relative z-10 rounded-2xl overflow-hidden aspect-square max-w-md mx-auto bg-white/5 flex items-center justify-center group"
             >
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" 
+                src="https://i.imgur.com/iGFxE3d.jpeg" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
