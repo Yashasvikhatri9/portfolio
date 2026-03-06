@@ -18,6 +18,24 @@ import {
 
 // --- Components ---
 
+const StaggerText = ({ text, delay = 0 }: { text: string, delay?: number }) => {
+  return (
+    <span className="inline-block overflow-hidden">
+      {text.split('').map((char, index) => (
+        <motion.span
+          key={index}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: delay + index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-block"
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
 const CustomCursor = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -286,14 +304,9 @@ const Hero = () => {
           <div className="mb-6">
             {titleWords.map((word, i) => (
               <div key={i} className="text-reveal">
-                <motion.h1 
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 1, delay: i * 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-oversized text-[12vw] sm:text-[15vw] lg:text-[10vw]"
-                >
-                  {word}
-                </motion.h1>
+                <h1 className="text-oversized text-[12vw] sm:text-[15vw] lg:text-[10vw]">
+                  <StaggerText text={word} delay={i * 0.2} />
+                </h1>
               </div>
             ))}
           </div>
@@ -301,10 +314,10 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 1, delay: 1.2 }}
           >
             <p className="text-lg md:text-2xl text-neutral-medium max-w-xl mb-12 leading-relaxed">
-              Engineering intelligent systems at the Big Data Center of Excellence. Specializing in Computer Vision, NLP, and Predictive Analytics.
+              <StaggerText text="Engineering intelligent systems at the Big Data Center of Excellence. Specializing in Computer Vision, NLP, and Predictive Analytics." delay={1.5} />
             </p>
             
             <div className="flex flex-wrap gap-6 items-center">
@@ -661,7 +674,10 @@ const Contact = () => {
     setErrorMessage('');
     
     try {
-      const response = await fetch('/api/contact', {
+      // Use absolute URL for Vercel serverless function compatibility
+      const apiUrl = process.env.NODE_ENV === 'production' ? '/api/contact' : '/api/contact';
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
