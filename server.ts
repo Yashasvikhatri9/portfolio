@@ -125,7 +125,7 @@ async function createServer() {
 // Start server if not running as a module (e.g., on Vercel)
 if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
   createServer().then(app => {
-    const PORT = process.env.PORT || 3000;
+    const PORT = parseInt(process.env.PORT || "3000", 10);
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server running on http://0.0.0.0:${PORT}`);
       console.log("Environment Variable Status:");

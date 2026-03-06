@@ -801,7 +801,7 @@ const Contact = () => {
     
     try {
       // Use absolute URL for Vercel serverless function compatibility
-      const apiUrl = process.env.NODE_ENV === 'production' ? '/api/contact' : '/api/contact';
+      const apiUrl = '/api/contact';
       
       const response = await fetch(apiUrl, {
         method: 'POST',
