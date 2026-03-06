@@ -10,15 +10,5 @@
       "src": "api/contact.ts",
       "use": "@vercel/node"
     }
-  ],
-  "routes": [
-    {
-      "src": "^/api/contact$",
-      "dest": "api/contact.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
   ]
 }
