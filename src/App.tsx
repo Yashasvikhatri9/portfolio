@@ -460,7 +460,7 @@ const Hero = () => {
                 src="https://i.imgur.com/iGFxE3d.jpeg" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
-                className="w-48 h-48 rounded-full object-cover mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
+                className="w-48 h-48 rounded-full object-cover object-[center_30%] mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
               />
               <h3 className="text-3xl font-display font-bold mb-2">YASHASVI KHATRI</h3>
               <p className="text-neutral-medium uppercase tracking-widest">ML Engineer</p>
@@ -515,7 +515,7 @@ const About = () => {
                 src="https://i.imgur.com/iGFxE3d.jpeg" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                className="w-full h-full object-cover object-[center_20%] filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-accent/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
             </motion.div>
