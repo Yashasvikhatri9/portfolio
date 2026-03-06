@@ -515,7 +515,7 @@ const About = () => {
                 src="https://i.imgur.com/iGFxE3d.jpeg" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-[center_20%] filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                className="w-full h-full object-cover object-[center_15%] filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-accent/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
             </motion.div>
