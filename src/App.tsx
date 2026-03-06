@@ -20,19 +20,55 @@ import {
 
 const StaggerText = ({ text, delay = 0 }: { text: string, delay?: number }) => {
   return (
-    <span className="inline-block overflow-hidden">
+    <span className="inline-flex overflow-hidden whitespace-nowrap">
       {text.split('').map((char, index) => (
         <motion.span
           key={index}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.8, delay: delay + index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: delay + index * 0.05, ease: "easeOut" }}
           className="inline-block"
         >
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
     </span>
+  );
+};
+
+const TypewriterText = ({ text, delay = 0, className = "", cursor = true }: { text: string, delay?: number, className?: string, cursor?: boolean }) => {
+  return (
+    <motion.span 
+      className={`inline-block ${className}`}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={{
+        visible: { transition: { staggerChildren: 0.05, delayChildren: delay } },
+        hidden: {}
+      }}
+    >
+      {text.split('').map((char, index) => (
+        <motion.span
+          key={index}
+          variants={{
+            hidden: { display: "none" },
+            visible: { display: "inline" }
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+      {cursor && (
+        <motion.span
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: [0, 1, 0], transition: { duration: 0.8, repeat: Infinity, ease: "linear" } }
+          }}
+          className="inline-block w-[0.5em] h-[1em] bg-current ml-1 align-middle"
+        />
+      )}
+    </motion.span>
   );
 };
 
@@ -203,10 +239,18 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${visible || mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'} ${isScrolled || mobileMenuOpen ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-8'}`}>
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+    <motion.nav 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: visible || mobileMenuOpen ? 0 : -100, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 w-full z-50 flex justify-center px-4 md:px-8 transition-all duration-500 ${isScrolled ? 'pt-4' : 'pt-8'}`}
+    >
+      <div className={`w-full max-w-7xl flex justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/50 rounded-full py-3 px-6 md:px-8' : 'bg-transparent py-2 px-2 md:px-4'}`}>
         <motion.a 
           href="#home" 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
           whileHover={{ scale: 1.05 }}
           className="text-2xl font-display font-bold tracking-tighter"
         >
@@ -214,26 +258,38 @@ const Navbar = () => {
         </motion.a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <div key={link.name} className="inline-block">
+        <div className="hidden md:flex items-center space-x-2">
+          {navLinks.map((link, i) => (
+            <motion.div 
+              key={link.name} 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
+              className="inline-block"
+            >
               <Magnetic>
                 <a 
                   href={link.href} 
-                  className="text-sm font-medium hover:text-accent transition-colors duration-300 uppercase tracking-widest relative group px-2 py-1"
+                  className="text-sm font-medium text-neutral-dark hover:text-white transition-colors duration-300 uppercase tracking-widest relative group px-4 py-2 rounded-full overflow-hidden block"
                 >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+                  <span className="relative z-10">{link.name}</span>
+                  <span className="absolute inset-0 bg-accent rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-out origin-center"></span>
                 </a>
               </Magnetic>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden p-2 hover:bg-neutral-light rounded-full transition-colors" onClick={() => setMobileMenuOpen(true)}>
+        <motion.button 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="md:hidden p-2 hover:bg-neutral-light rounded-full transition-colors" 
+          onClick={() => setMobileMenuOpen(true)}
+        >
           <Menu size={24} />
-        </button>
+        </motion.button>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -272,7 +328,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 
@@ -280,7 +336,7 @@ const Hero = () => {
   const titleWords = ["MACHINE", "LEARNING"];
   
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center section-padding pt-32 relative overflow-hidden bg-grid">
+    <section id="home" className="min-h-screen flex flex-col justify-start section-padding pt-32 relative overflow-hidden bg-grid">
       {/* Background Blobs */}
       <motion.div 
         animate={{ 
@@ -299,26 +355,62 @@ const Hero = () => {
         className="bg-blob w-[30rem] h-[30rem] bg-accent/10 bottom-0 right-0"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 z-10">
-          <div className="mb-6">
-            {titleWords.map((word, i) => (
-              <div key={i} className="text-reveal">
-                <h1 className="text-oversized text-[12vw] sm:text-[15vw] lg:text-[10vw]">
-                  <StaggerText text={word} delay={i * 0.2} />
-                </h1>
-              </div>
-            ))}
+      {/* Ghost Element */}
+      <div className="ghost">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      {/* NEW TITLE AT TOP */}
+      <div className="content w-full flex justify-center z-10 mb-12 md:mb-20 relative">
+        <h1 className="title leading-[0.9]">
+          <StaggerText text="MACHINE" delay={0} /><br/>
+          <StaggerText text="LEARNING" delay={0.2} />
+          <div className="aurora">
+            <div className="aurora__item"></div>
+            <div className="aurora__item"></div>
+            <div className="aurora__item"></div>
+            <div className="aurora__item"></div>
           </div>
-          
+        </h1>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10">
+        <div className="lg:col-span-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
           >
-            <p className="text-lg md:text-2xl text-neutral-medium max-w-xl mb-12 leading-relaxed">
-              <StaggerText text="Engineering intelligent systems at the Big Data Center of Excellence. Specializing in Computer Vision, NLP, and Predictive Analytics." delay={1.5} />
-            </p>
+            <div className="illustration-editor">
+              <div className="editor-block">
+                <div className="editor-header">
+                  <div className="editor-dot r"></div>
+                  <div className="editor-dot y"></div>
+                  <div className="editor-dot g"></div>
+                </div>
+                <div className="editor-content inline-block w-full">
+                  <span className="editor-line editor-line-1">
+                    <span className="c-p">const</span> <span className="c-b">engineer</span> = {'{'}
+                  </span>
+                  <span className="editor-line editor-line-2">
+                    &nbsp;&nbsp;<span className="c-g">role</span>: <span className="c-y">"Engineering intelligent systems"</span>,
+                  </span>
+                  <span className="editor-line editor-line-3">
+                    &nbsp;&nbsp;<span className="c-g">org</span>: <span className="c-y">"Big Data Center of Excellence"</span>,
+                  </span>
+                  <span className="editor-line editor-line-4">
+                    &nbsp;&nbsp;<span className="c-g">skills</span>: [<span className="c-y">"CV"</span>, <span className="c-y">"NLP"</span>, <span className="c-y">"Analytics"</span>]
+                  </span>
+                  <span className="editor-line editor-line-5">
+                    {'}'};
+                  </span>
+                </div>
+              </div>
+            </div>
             
             <div className="flex flex-wrap gap-6 items-center">
               <div className="flex -space-x-4">
@@ -364,11 +456,16 @@ const Hero = () => {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="text-center"
             >
-              <Camera size={80} className="text-accent mx-auto mb-6 group-hover:scale-110 transition-transform duration-500" />
+              <img 
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" 
+                alt="Yashasvi Khatri" 
+                referrerPolicy="no-referrer"
+                className="w-48 h-48 rounded-full object-cover mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
+              />
               <h3 className="text-3xl font-display font-bold mb-2">YASHASVI KHATRI</h3>
               <p className="text-neutral-medium uppercase tracking-widest">ML Engineer</p>
             </motion.div>
-            <div className="absolute inset-0 bg-accent/5 mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-accent/5 mix-blend-overlay pointer-events-none"></div>
           </motion.div>
           
           {/* Decorative Elements */}
@@ -414,12 +511,13 @@ const About = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="relative z-10 rounded-2xl overflow-hidden aspect-square max-w-md mx-auto bg-white/5 flex items-center justify-center group"
             >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 1 }}
-              >
-                <Globe size={120} className="text-accent opacity-50" />
-              </motion.div>
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" 
+                alt="Yashasvi Khatri" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-accent/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
             </motion.div>
             
             {/* Abstract Shapes */}
@@ -440,7 +538,8 @@ const About = () => {
             >
               <span className="text-accent font-display font-bold tracking-[0.3em] uppercase mb-4 block">The Engineer</span>
               <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold mb-8 tracking-tighter">
-                SOLVING WITH <br /><span className="text-accent">DATA.</span>
+                <span className="glitch-text" data-text="SOLVING WITH">SOLVING WITH</span> <br />
+                <span className="glitch-text" data-text="DATA.">DATA.</span>
               </h2>
               <p className="text-lg text-neutral-medium mb-8 leading-relaxed">
                 I am a Machine Learning Engineer at the Big Data Center of Excellence (BDCOE), where I engineer classification, clustering, and predictive models that drive 25% accuracy improvements in real-world systems.
@@ -451,11 +550,11 @@ const About = () => {
               
               <div className="grid grid-cols-2 gap-8">
                 <motion.div whileHover={{ scale: 1.05 }} className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                  <h4 className="text-3xl font-display font-bold text-white mb-2">94%</h4>
+                  <h4 className="text-3xl font-display font-bold text-white mb-2 neon-text">94%</h4>
                   <p className="text-sm text-neutral-medium uppercase tracking-widest">Model Accuracy</p>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                  <h4 className="text-3xl font-display font-bold text-white mb-2">40%</h4>
+                  <h4 className="text-3xl font-display font-bold text-white mb-2 neon-text">40%</h4>
                   <p className="text-sm text-neutral-medium uppercase tracking-widest">Effort Reduction</p>
                 </motion.div>
               </div>
@@ -531,8 +630,16 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="section-padding bg-bg-light">
-      <div className="max-w-7xl mx-auto">
+    <section id="portfolio" className="section-padding bg-bg-light relative overflow-hidden">
+      {/* Aurora Background */}
+      <div className="aurora">
+        <div className="aurora__item"></div>
+        <div className="aurora__item"></div>
+        <div className="aurora__item"></div>
+        <div className="aurora__item"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -564,8 +671,9 @@ const Portfolio = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ 
-                y: -15, 
-                skewX: -2,
+                scale: 1.02,
+                y: -10,
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
                 transition: { duration: 0.3 } 
               }}
               className={`relative rounded-3xl overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 min-h-[400px] h-full ${
@@ -598,8 +706,22 @@ const Portfolio = () => {
                     >
                       {project.category}
                     </motion.span>
-                    <h3 className="text-white text-2xl font-display font-bold mb-2">{project.title}</h3>
-                    <p className="text-white/70 text-sm line-clamp-2">{project.desc}</p>
+                    <motion.h3 
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1, duration: 0.5 }}
+                      className="text-white text-2xl font-display font-bold mb-2"
+                    >
+                      {project.title}
+                    </motion.h3>
+                    <motion.p 
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.2, duration: 0.5 }}
+                      className="text-white/70 text-sm line-clamp-2"
+                    >
+                      {project.desc}
+                    </motion.p>
                   </div>
                 </>
               )}
@@ -623,8 +745,12 @@ const Exhibitions = () => {
     <section id="exhibitions" className="section-padding bg-neutral-light overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <span className="text-accent font-display font-bold tracking-[0.3em] uppercase mb-4 block">Experience & Research</span>
-          <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">TIMELINE.</h2>
+          <span className="text-accent font-display font-bold tracking-[0.3em] uppercase mb-4 block">
+            <TypewriterText text="Experience & Research" delay={0} cursor={false} />
+          </span>
+          <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">
+            <TypewriterText text="TIMELINE." delay={1.2} cursor={true} />
+          </h2>
         </div>
 
         <div className="space-y-4">

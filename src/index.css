@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+:root {
+  --clr-1: #00c2ff;
+  --clr-2: #33ff8c;
+  --clr-3: #ffc640;
+  --clr-4: #e54cff;
+  --blur: 1rem;
+  --bg: #000000;
+  --fs: clamp(4rem, 12vw, 10rem);
+  --ls: clamp(-1.75px, -0.25vw, -3.5px);
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
@@ -135,4 +146,303 @@
 
 .pill-button-accent {
   @apply px-8 py-3 rounded-full bg-accent text-bg-dark hover:bg-bg-dark hover:text-bg-light transition-all duration-300 font-medium;
+}
+
+/* Ghost Animation */
+.ghost {
+	width: 8vmin;
+	height: 12vmin;
+	background-color: #e7e6e6;
+	background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+	background-image: radial-gradient(ellipse at 35% 40%, #000 8%, transparent 0%),
+		radial-gradient(ellipse at 65% 40%, #000 8%, transparent 0%),
+		radial-gradient(ellipse at 50% 60%, #000 8%, transparent 0%);
+	border-radius: 100% / 70% 70% 0% 0%;
+	transform: translateX(100vw) rotateZ(-90deg);
+	position: absolute;
+    top: 20%;
+	opacity: 0.9;
+	mix-blend-mode: exclusion;
+	animation: ghostMove 6s ease-out infinite;
+    z-index: 50;
+    pointer-events: none;
+}
+@keyframes ghostMove {
+	0% {
+		transform: translateX(100vw) rotateZ(-90deg);
+	}
+	100% {
+		transform: translateX(-50vw) rotateZ(-90deg);
+	}
+}
+.ghost div {
+	position: absolute;
+	width: 20%;
+	background-color: #e7e6e6;
+	background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+}
+.ghost div:nth-of-type(1) {
+	height: 7vmin;
+	left: 0;
+	bottom: -6vmin;
+	border-radius: 100% / 0% 0% 50% 50%;
+}
+.ghost div:nth-of-type(2),
+.ghost div:nth-of-type(4) {
+	height: 4vmin;
+	left: 20%;
+	bottom: -3vmin;
+	border-radius: 100% / 50% 50% 0% 0%;
+	background-color: transparent;
+}
+.ghost div:nth-of-type(3) {
+	height: 4vmin;
+	left: 40%;
+	bottom: -3.95vmin;
+	border-radius: 100% / 0% 0% 60% 60%;
+	background-color: #e7e6e6;
+}
+.ghost div:nth-of-type(4) {
+	left: 60%;
+}
+.ghost div:nth-of-type(5) {
+	height: 3vmin;
+	left: 80%;
+	bottom: -2.9vmin;
+	border-radius: 100% / 0% 0% 70% 70%;
+	background-color: #e7e6e6;
+}
+
+/* Code Editor Animation */
+.illustration-editor {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 750px;
+}
+
+.editor-block {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 2.5rem;
+  background: linear-gradient(109.61deg, #4C4F5A 4.26%, #202125 84.84%);
+  border-radius: 12px;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+  font-family: 'JetBrains Mono', monospace;
+  color: #C5C8D4;
+  font-size: clamp(0.85rem, 2vw, 1.15rem);
+  line-height: 2;
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.editor-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.editor-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.editor-dot.r { background: #FF5F56; }
+.editor-dot.y { background: #FFBD2E; }
+.editor-dot.g { background: #27C93F; }
+
+.c-r { color: #A88038 }
+.c-o { color: #DE7300 }
+.c-y { color: #E1CA72 }
+.c-g { color: #74B087 }
+.c-p { color: #9F8198 }
+.c-b { color: #7A99AD }
+.c-c { color: #666666 }
+
+.editor-line {
+  width: 0%;
+  margin: 0;
+  border-right: .15em solid transparent;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+}
+
+.editor-line-1 { animation: typing-editor-1 0.5s 0s steps(40, end) forwards, cursor 0.5s linear 0s 1; }
+.editor-line-2 { animation: typing-editor-2 1s 0.5s steps(40, end) forwards, cursor 0.5s linear 0.5s 2; }
+.editor-line-3 { animation: typing-editor-3 1s 1.5s steps(40, end) forwards, cursor 0.5s linear 1.5s 2; }
+.editor-line-4 { animation: typing-editor-4 1s 2.5s steps(50, end) forwards, cursor 0.5s linear 2.5s 2; }
+.editor-line-5 { animation: typing-editor-5 0.2s 3.5s steps(10, end) forwards, cursor-persist 1s linear 3.5s infinite; }
+
+@keyframes typing-editor-1 { from { width: 0 } to { width: 100% } }
+@keyframes typing-editor-2 { from { width: 0 } to { width: 100% } }
+@keyframes typing-editor-3 { from { width: 0 } to { width: 100% } }
+@keyframes typing-editor-4 { from { width: 0 } to { width: 100% } }
+@keyframes typing-editor-5 { from { width: 0 } to { width: 100% } }
+
+@keyframes cursor {
+  from, to, 20%, 80% { border-color: transparent }
+  25%, 75% { border-color: white }
+}
+@keyframes cursor-persist {
+  from, 45% { border-color: transparent }
+  50%, to { border-color: white }
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-family: "Inter", "DM Sans", Arial, sans-serif;
+  font-size: var(--fs);
+  font-weight: 800;
+  letter-spacing: var(--ls);
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  margin: 0;
+  color: #000000;
+  padding: 0 20px;
+  mix-blend-mode: multiply;
+}
+
+/* Aurora Effect */
+.aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.aurora__item {
+  overflow: hidden;
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background-color: var(--clr-1);
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter: blur(var(--blur));
+}
+
+.aurora__item:nth-of-type(1) {
+  top: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-1 12s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(2) {
+  background-color: var(--clr-3);
+  right: 0;
+  top: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-2 12s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(3) {
+  background-color: var(--clr-2);
+  left: 0;
+  bottom: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-3 8s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(4) {
+  background-color: var(--clr-4);
+  right: 0;
+  bottom: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-4 24s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-1 {
+  0% { top: 0; right: 0; }
+  50% { top: 100%; right: 75%; }
+  75% { top: 100%; right: 25%; }
+  100% { top: 0; right: 0; }
+}
+
+@keyframes aurora-2 {
+  0% { top: -50%; left: 0%; }
+  60% { top: 100%; left: 75%; }
+  85% { top: 100%; left: 25%; }
+  100% { top: -50%; left: 0%; }
+}
+
+@keyframes aurora-3 {
+  0% { bottom: 0; left: 0; }
+  40% { bottom: 100%; left: 75%; }
+  65% { bottom: 40%; left: 50%; }
+  100% { bottom: 0; left: 0; }
+}
+
+@keyframes aurora-4 {
+  0% { bottom: -50%; right: 0; }
+  50% { bottom: 0%; right: 40%; }
+  90% { bottom: 50%; right: 25%; }
+  100% { bottom: -50%; right: 0; }
+}
+
+@keyframes aurora-border {
+  0% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; }
+  25% { border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%; }
+  50% { border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%; }
+  75% { border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%; }
+  100% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; }
+}
+.glitch-text {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    animation: glitch 2s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ff005e;
+    background: transparent;
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    animation: glitch 2s infinite;
+}
+
+.glitch-text::after {
+    color: #00d4ff;
+    clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+}
+
+/* Neon Glow Effect */
+.neon-text {
+    color: #fff;
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    }
+    100% {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+    }
 }
