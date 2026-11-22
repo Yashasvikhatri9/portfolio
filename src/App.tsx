@@ -457,10 +457,10 @@ const Hero = () => {
               className="text-center"
             >
               <img 
-                src="/images/yashasvi-profile.jpg" 
+                src="/images/yashasvi-profile.webp" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
-                className="w-48 h-48 rounded-full object-cover object-[center_30%] mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
+                className="w-48 h-48 rounded-full object-cover object-[center_30%] mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500"
               />
               <h3 className="text-3xl font-display font-bold mb-2">YASHASVI KHATRI</h3>
               <p className="text-neutral-medium uppercase tracking-widest">CS Student &amp; ML Researcher</p>
@@ -512,12 +512,11 @@ const About = () => {
               className="relative z-10 rounded-2xl overflow-hidden aspect-square max-w-md mx-auto bg-white/5 flex items-center justify-center group"
             >
               <img 
-                src="/images/yashasvi-profile.jpg" 
+                src="/images/yashasvi-profile.webp" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-[center_5%] filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                className="w-full h-full object-cover object-[center_5%] transition-all duration-700 scale-100 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-accent/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
             </motion.div>
             
             {/* Abstract Shapes */}
