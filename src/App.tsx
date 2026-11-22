@@ -397,13 +397,13 @@ const Hero = () => {
                     <span className="c-p">const</span> <span className="c-b">engineer</span> = {'{'}
                   </span>
                   <span className="editor-line editor-line-2">
-                    &nbsp;&nbsp;<span className="c-g">role</span>: <span className="c-y">"Engineering intelligent systems"</span>,
+                    &nbsp;&nbsp;<span className="c-g">role</span>: <span className="c-y">"Building and evaluating ML systems"</span>,
                   </span>
                   <span className="editor-line editor-line-3">
-                    &nbsp;&nbsp;<span className="c-g">org</span>: <span className="c-y">"Big Data Center of Excellence"</span>,
+                    &nbsp;&nbsp;<span className="c-g">org</span>: <span className="c-y">"AKGEC / BDCOE"</span>,
                   </span>
                   <span className="editor-line editor-line-4">
-                    &nbsp;&nbsp;<span className="c-g">skills</span>: [<span className="c-y">"CV"</span>, <span className="c-y">"NLP"</span>, <span className="c-y">"Analytics"</span>]
+                    &nbsp;&nbsp;<span className="c-g">skills</span>: [<span className="c-y">"PyTorch"</span>, <span className="c-y">"CV"</span>, <span className="c-y">"NLP"</span>]
                   </span>
                   <span className="editor-line editor-line-5">
                     {'}'};
@@ -463,7 +463,7 @@ const Hero = () => {
                 className="w-48 h-48 rounded-full object-cover object-[center_30%] mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
               />
               <h3 className="text-3xl font-display font-bold mb-2">YASHASVI KHATRI</h3>
-              <p className="text-neutral-medium uppercase tracking-widest">ML Engineer</p>
+              <p className="text-neutral-medium uppercase tracking-widest">CS Student &amp; ML Researcher</p>
             </motion.div>
             <div className="absolute inset-0 bg-accent/5 mix-blend-overlay pointer-events-none"></div>
           </motion.div>
@@ -492,7 +492,7 @@ const Hero = () => {
         className="absolute bottom-0 left-0 w-full opacity-[0.03] select-none pointer-events-none whitespace-nowrap"
       >
         <h2 className="text-[25vw] font-display font-black tracking-tighter leading-none">
-          ENGINEER 2025 • INNOVATOR • DEVELOPER • 
+          ML RESEARCHER 2026 • BUILDER • DEVELOPER • 
         </h2>
       </motion.div>
     </section>
@@ -542,20 +542,20 @@ const About = () => {
                 <span className="glitch-text" data-text="DATA.">DATA.</span>
               </h2>
               <p className="text-lg text-neutral-medium mb-8 leading-relaxed">
-                I am a Machine Learning Engineer at the Big Data Center of Excellence (BDCOE), where I engineer classification, clustering, and predictive models that drive 25% accuracy improvements in real-world systems.
+                I am a Computer Science undergraduate at Ajay Kumar Garg Engineering College, focused on machine learning, deep learning, and practical AI systems. I work with the Big Data Center of Excellence (BDCOE) and explore research problems in image restoration, speech emotion recognition, computer vision, and medical image analysis.
               </p>
               <p className="text-lg text-neutral-medium mb-12 leading-relaxed">
-                Currently pursuing my B.Tech in Computer Science at AKGEC, I focus on building automated ML workflows and conducting deep exploratory data analysis to identify trends and anomalies that shape the future of technology.
+                During my research internship at IIT Roorkee, I worked on multi-frame image super-resolution using Python and PyTorch. I enjoy building and evaluating ML systems, from recommendation and NLP models to audio and image-based applications.
               </p>
               
               <div className="grid grid-cols-2 gap-8">
                 <motion.div whileHover={{ scale: 1.05 }} className="p-6 bg-white/5 rounded-2xl border border-white/10">
                   <h4 className="text-3xl font-display font-bold text-white mb-2 neon-text">94%</h4>
-                  <p className="text-sm text-neutral-medium uppercase tracking-widest">Model Accuracy</p>
+                  <p className="text-sm text-neutral-medium uppercase tracking-widest">Fake News Model Accuracy</p>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                  <h4 className="text-3xl font-display font-bold text-white mb-2 neon-text">40%</h4>
-                  <p className="text-sm text-neutral-medium uppercase tracking-widest">Effort Reduction</p>
+                  <h4 className="text-3xl font-display font-bold text-white mb-2 neon-text">61.29%</h4>
+                  <p className="text-sm text-neutral-medium uppercase tracking-widest">HuBERT SER Accuracy</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -573,60 +573,24 @@ const About = () => {
 
 const Portfolio = () => {
   const projects = [
-    { 
-      id: 1, 
-      title: "Hand Gesture Control", 
-      category: "Computer Vision", 
-      img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800", 
-      size: "lg", 
-      desc: "Real-time recognition using OpenCV and CNNs with 92% accuracy.",
-      link: "https://github.com/Yashasvikhatri9/hand-gestures-control" 
+    {
+      id: 1,
+      title: "Movie Recommendation System",
+      category: "Machine Learning",
+      img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800",
+      size: "sm",
+      desc: "Hybrid recommendation engine combining collaborative filtering and content similarity, evaluated with RMSE, MAE, and hit rate.",
+      link: "https://github.com/Yashasvikhatri9/MOVIE-RECOMMEND"
     },
-    { 
-      id: 2, 
-      title: "Fake News Prediction", 
-      category: "NLP", 
-      img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800", 
-      size: "sm", 
-      desc: "TF-IDF + Logistic Regression model achieving 94% accuracy.",
-      link: "https://github.com/Yashasvikhatri9/FAKE-NEWS-PREDICTION-BY-LR" 
-    },
-    { 
-      id: 3, 
-      title: "The Tech Stack", 
-      category: "Skills", 
-      img: "", 
-      size: "accent", 
-      desc: "Python, TensorFlow, Scikit-learn, FastAPI.",
-      link: "https://github.com" 
-    },
-    { 
-      id: 4, 
-      title: "EDA of Spotify", 
-      category: "Data Analysis", 
-      img: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&q=80&w=800", 
-      size: "sm", 
-      desc: "Exploratory analysis of music trends and feature correlations.",
-      link: "https://github.com/Yashasvikhatri9/EDA_SPOTIFY" 
-    },
-    { 
-      id: 5, 
-      title: "Movie Recommendation", 
-      category: "ML Systems", 
-      img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800", 
-      size: "lg", 
-      desc: "Hybrid engine using collaborative filtering and matrix factorization.",
-      link: "https://github.com/Yashasvikhatri9/MOVIE-RECOMMEND" 
-    },
-    { 
-      id: 6, 
-      title: "Face Recognition", 
-      category: "Computer Vision", 
-      img: "https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&q=80&w=800", 
-      size: "sm", 
-      desc: "Robust facial recognition and verification system using deep learning.",
-      link: "https://github.com/Yashasvikhatri9/Face-Recognition" 
-    },
+    {
+      id: 2,
+      title: "Fake News Prediction",
+      category: "Natural Language Processing",
+      img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800",
+      size: "sm",
+      desc: "TF-IDF and Logistic Regression model achieving 94% accuracy and a 0.91 F1-score.",
+      link: "https://github.com/Yashasvikhatri9/FAKE-NEWS-PREDICTION-BY-LR"
+    }
   ];
 
   return (
@@ -735,10 +699,51 @@ const Portfolio = () => {
 
 const Exhibitions = () => {
   const events = [
-    { id: '01', title: "Real-Time Video Tampering Detection", location: "Research Project", date: "2025", link: "https://github.com/Yashasvikhatri9/video-tampering" },
-    { id: '02', title: "Fetal Head Biometry ML", location: "Research Project", date: "2026", link: "https://github.com/abhishekrajdhar/Research-1" },
-    { id: '03', title: "Big Data Center of Excellence", location: "Machine Learning Engineer", date: "2024–Present", link: "#" },
-    { id: '04', title: "AKGEC Ghaziabad", location: "B.Tech Computer Science", date: "2024–2028", link: "https://github.com/Yashasvikhatri9" },
+    {
+      id: '01',
+      title: "Deep Burst Super-Resolution",
+      location: "Research Intern • IIT Roorkee",
+      date: "Jun–Jul 2026",
+      kind: "INTERNSHIP",
+      summary: "Worked on multi-frame image super-resolution, RAW preprocessing, optical-flow alignment, and attention-guided feature fusion.",
+      link: ""
+    },
+    {
+      id: '02',
+      title: "Machine Learning Engineer • BDCOE",
+      location: "Big Data Center of Excellence",
+      date: "2024–Present",
+      kind: "EXPERIENCE",
+      summary: "Worked on classification, clustering, predictive analytics, and reusable machine learning workflows.",
+      link: ""
+    },
+    {
+      id: '03',
+      title: "Multi-Corpus Speech Emotion Recognition",
+      location: "Research Project",
+      date: "2026",
+      kind: "RESEARCH",
+      summary: "Compared CNN, CNN-BiLSTM with attention, and HuBERT-Base across CREMA-D, RAVDESS, and IEMOCAP under a 4.3 GB VRAM limit.",
+      link: ""
+    },
+    {
+      id: '04',
+      title: "Real-Time Video Tampering Detection",
+      location: "Research Project",
+      date: "2025",
+      kind: "RESEARCH",
+      summary: "Explored detection of frame insertion, deletion, and duplication using spatial-temporal video features.",
+      link: "https://github.com/Yashasvikhatri9/video-tampering"
+    },
+    {
+      id: '05',
+      title: "Fetal Head Biometry Using Machine Learning",
+      location: "Research Project",
+      date: "2026",
+      kind: "RESEARCH",
+      summary: "Worked on ultrasound image preprocessing and segmentation for BPD and head-circumference measurement.",
+      link: "https://github.com/abhishekrajdhar/Research-1"
+    }
   ];
 
   return (
@@ -755,31 +760,36 @@ const Exhibitions = () => {
 
         <div className="space-y-4">
           {events.map((event, i) => (
-            <motion.a 
+            <motion.div
               key={event.id}
-              href={event.link}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group border-b border-neutral-medium/30 py-12 flex flex-col md:flex-row md:items-center justify-between gap-8 hover:bg-white transition-all duration-500 px-4 md:px-8 rounded-2xl cursor-pointer block"
+              className="group border-b border-neutral-medium/30 py-12 flex flex-col md:flex-row md:items-center justify-between gap-8 hover:bg-white transition-all duration-500 px-4 md:px-8 rounded-2xl"
             >
               <div className="flex items-center gap-8">
                 <span className="text-xl font-display font-bold text-neutral-medium group-hover:text-accent transition-colors">{event.id}</span>
                 <div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold tracking-tight mb-2 group-hover:translate-x-2 transition-transform duration-300">{event.title}</h3>
                   <p className="text-neutral-medium uppercase tracking-widest text-sm">{event.location} — {event.date}</p>
+                  <p className="text-neutral-medium/80 text-sm mt-3 max-w-3xl">{event.summary}</p>
                 </div>
               </div>
-              <motion.div 
-                whileHover={{ scale: 1.1 }}
-                className="pill-button self-start md:self-center whitespace-nowrap"
-              >
-                VIEW DETAILS
-              </motion.div>
-            </motion.a>
+              {event.link ? (
+                <motion.a
+                  href={event.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="pill-button self-start md:self-center whitespace-nowrap"
+                >
+                  VIEW DETAILS
+                </motion.a>
+              ) : (
+                <span className="text-accent text-xs font-bold tracking-widest self-start md:self-center">{event.kind}</span>
+              )}
+            </motion.div>
           ))}
         </div>
       </div>
@@ -865,7 +875,7 @@ const Contact = () => {
               <div className="flex gap-6 pt-6">
                 {[
                   { Icon: Github, href: 'https://github.com/Yashasvikhatri9' },
-                  { Icon: Linkedin, href: 'https://www.linkedin.com/in/yashasvi-khatri/' }
+                  { Icon: Linkedin, href: 'https://www.linkedin.com/in/yashasvi-khatri-0180622a7/' }
                 ].map(({ Icon, href }, i) => (
                   <div key={i} className="inline-block">
                     <Magnetic>
@@ -1029,11 +1039,11 @@ const Footer = () => {
         
         <div className="flex space-x-8">
           <a href="https://github.com/Yashasvikhatri9" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-medium hover:text-white transition-colors">Github</a>
-          <a href="https://www.linkedin.com/in/yashasvi-khatri/" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-medium hover:text-white transition-colors">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/yashasvi-khatri-0180622a7/" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-medium hover:text-white transition-colors">LinkedIn</a>
         </div>
         
         <p className="text-sm text-neutral-medium">
-          © 2025 Yashasvi Khatri. All rights reserved.
+          © 2026 Yashasvi Khatri. All rights reserved.
         </p>
       </div>
     </footer>
@@ -1094,7 +1104,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <Marquee items={['Computer Vision', 'NLP', 'TensorFlow', 'PyTorch', 'OpenCV', 'Scikit-Learn', 'FastAPI', 'Data Analysis', 'Deep Learning']} />
+        <Marquee items={['Python', 'C', 'PyTorch', 'scikit-learn', 'TensorFlow / Keras', 'Pandas', 'NumPy', 'OpenCV', 'Computer Vision', 'NLP', 'FastAPI', 'Flask', 'Deep Learning']} />
         <Portfolio />
         <Exhibitions />
         <Contact />
