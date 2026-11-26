@@ -457,7 +457,7 @@ const Hero = () => {
               className="text-center"
             >
               <img 
-                src="/images/yashasvi-profile.webp" 
+                src="/images/file_00000000e46c81f890d1d912dcaf0f3e.png" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
                 className="w-48 h-48 rounded-full object-cover object-[center_30%] mx-auto mb-8 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-500"
@@ -512,7 +512,7 @@ const About = () => {
               className="relative z-10 rounded-2xl overflow-hidden aspect-square max-w-md mx-auto bg-white/5 flex items-center justify-center group"
             >
               <img 
-                src="/images/yashasvi-profile.webp" 
+                src="/images/file_00000000e46c81f890d1d912dcaf0f3e.png" 
                 alt="Yashasvi Khatri" 
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-[center_5%] transition-all duration-700 scale-100 group-hover:scale-105"
